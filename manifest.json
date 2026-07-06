@@ -1,0 +1,8 @@
+{
+  "name": "LT Preise",
+  "short_name": "LT Preise",
+  "display": "standalone",
+  "start_url": "./",
+  "background_color": "#ffffff",
+  "theme_color": "#0A84FF"
+}
