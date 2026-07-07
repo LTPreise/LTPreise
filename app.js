@@ -43,13 +43,34 @@ function berechnen() {
     preis += maut;
 
     // Mindestpreis
-    if (preis < 120) {
-        preis = 120;
+    if (preis < 75) {
+        preis = 75;
     }
 
     document.getElementById("gesamtKm").innerHTML =
         kalkulationsKm.toFixed(0) + " km";
 
-    document.getElementById("preis").innerHTML =
-        preis.toFixed(2).replace(".", ",") + " € netto";
+  document.getElementById("preis").innerHTML =
+    preis.toFixed(2).replace(".", ",") + " € netto";
+
+// Effektiver Preis pro tatsächlich gefahrenem Kilometer
+let tatsaechlicheKm = beladen + extra;
+
+if (rueckfahrt) {
+    tatsaechlicheKm += beladen;
+}
+
+let effektiv = preis / tatsaechlicheKm;
+
+let ampel = "";
+
+if (effektiv < 1.00) {
+    ampel = "🔴 Schlechte Marge";
+} else if (effektiv < 1.20) {
+    ampel = "🟡 Durchschnittliche Marge";
+} else {
+    ampel = "🟢 Gute Marge";
+}
+
+document.getElementById("ampel").innerHTML = ampel;  
 }
