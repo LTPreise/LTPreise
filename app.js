@@ -29,7 +29,7 @@ function berechnen() {
     let kalkulationsKm = beladen + extra;
 
     if (rueckfahrt) {
-        kalkulationsKm += beladen * 0.5;
+        kalkulationsKm += beladen * 0.25;
     }
 
     let preis = kalkulationsKm * kmPreis;
@@ -62,15 +62,28 @@ if (rueckfahrt) {
 
 let effektiv = preis / tatsaechlicheKm;
 
+// Tatsächlich gefahrene Kilometer
+let tatsaechlicheKm = beladen + extra;
+
+if (rueckfahrt) {
+    tatsaechlicheKm += beladen;
+}
+
+let effektiv = preis / tatsaechlicheKm;
+
 let ampel = "";
 
-if (effektiv < 1.00) {
+if (effektiv < 1.25) {
     ampel = "🔴 Schlechte Marge";
-} else if (effektiv < 1.20) {
-    ampel = "🟡 Durchschnittliche Marge";
+} else if (effektiv < 1.45) {
+    ampel = "🟡 Ausreichende Marge";
 } else {
     ampel = "🟢 Gute Marge";
 }
 
-document.getElementById("ampel").innerHTML = ampel;  
-}
+document.getElementById("ampel").innerHTML = ampel;
+
+
+
+
+    
