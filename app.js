@@ -8,9 +8,18 @@ function berechnen() {
     // Rückfahrt leer?
     let rueckfahrt = document.getElementById("rueckfahrt").checked;
 
-    // Kilometerpreis automatisch wählen
-    let kmPreis = 0;
+    // Kilometerpreis automatisch wähle
+let kmPreisEingabe = document.getElementById("kmPreis").value.trim();
+let kmPreis;
 
+// Wenn ein Preis eingegeben wurde -> diesen verwenden
+if (kmPreisEingabe !== "") {
+
+    kmPreis = Number(kmPreisEingabe);
+
+} else {
+
+    // Automatische Preisstaffel
     if (beladen <= 50) {
         kmPreis = 1.90;
     } else if (beladen <= 100) {
@@ -25,6 +34,7 @@ function berechnen() {
         kmPreis = 1.35;
     }
 
+}
     // Leerkilometer mit 50 %
     let kalkulationsKm = beladen + extra;
 
